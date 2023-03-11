@@ -1,0 +1,6 @@
+<div class="restaurants-layout">
+  <h2>{{ restaurants.name }}</h2>
+  <img [src]="restaurants.imageUrl" [alt]="restaurants.name">
+  <p>{{ restaurants.department }}</p>
+  <p *ngIf = "restaurants.certification">Certification : {{ restaurants.certification }}</p>
+</div>

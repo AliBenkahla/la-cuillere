@@ -14,7 +14,7 @@
 
 /* Basic CSS for apps built with Ionic */
 @import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
+//@import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
 
@@ -24,3 +24,12 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+* {
+    font-family: Roboto, Helvetica, sans-serif;
+  }
+
+  body {
+    padding : 0;
+    margin : 0;
+  }

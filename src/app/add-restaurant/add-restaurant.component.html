@@ -1,0 +1,12 @@
+<div class="landing-block">
+  <form #restaurantForm="ngForm" (ngSubmit)="onSubmitForm(restaurantForm)">
+
+    <label for="restaurantName">nom</label>
+    <input type="text" id="restaurantNameInput" [(ngModel)]="restaurantName" name="restaurantName">
+
+    <label for="restaurantDepartment">departement</label>
+    <input type="text" id="restaurantDepartmentInput" [(ngModel)]="restaurantDepartment" name="restaurantDepartment">
+
+    <button type="submit">OK !</button>
+  </form>
+</div>

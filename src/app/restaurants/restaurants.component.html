@@ -1,0 +1,9 @@
+<div style="position: relative;" (click)="onViewSnap()" class="restaurants-layout">
+  <h2>{{ restaurants.name }}</h2>
+  <img [src]="restaurants.imageUrl" [alt]="restaurants.name">
+  <p>Département : {{ restaurants.department }}</p>
+  <p>Note : {{ restaurants.note }}</p>
+
+  <p *ngIf = "restaurants.certification">Certification : {{ restaurants.certification }}</p>
+</div>
+
