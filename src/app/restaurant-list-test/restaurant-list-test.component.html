@@ -3,30 +3,21 @@
 <button (click) = "onSortRestaurantsDescendant()">Trier par prix décroissant</button>
 
 
-  <h1>Filtres par cuisine</h1>
+<h1>Filtres par cuisine</h1>
 
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div *ngFor="let data of Data">
+    <label>
+      <input type="checkbox" [formControlName]="data.value" />
+      {{ data.name }}
+    </label>
+  </div>
 
-<form [formGroup]="form" (ngSubmit)="submit()">
-
-  <input type="checkbox" name="marocain" value="marocain">
-  <label for="marocain">Marocain</label><br>
-
-  <input type="checkbox" name="tunisien" value="tunisien">
-  <label for="tunisien">Tunisien</label><br>
-
-  <input type="checkbox" name="francais" value="francais">
-  <label for="francais">Français</label><br><br>  
-  
   <button>submit</button>
-  
 </form>
 
 
-
 <div>
-  <app-restaurant *ngFor = "let restaurantElementOfArray of restaurantArray"
-  [restaurants]="restaurantElementOfArray">
-  
-  </app-restaurant>
-  </div>
+  <app-restaurant *ngFor="let restaurant of filteredRestaurants" [restaurants]="restaurant"></app-restaurant>
+</div>
 

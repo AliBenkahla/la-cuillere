@@ -16,6 +16,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RestaurantListTestComponent } from './restaurant-list-test/restaurant-list-test.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

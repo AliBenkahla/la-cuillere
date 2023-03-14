@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantArrayService } from '../services/restaurant-array.service';
 import { Restaurants } from '../models/restaurants.model';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+
 
 
 
@@ -14,43 +15,65 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class RestaurantListTestComponent implements OnInit {
 
+  arr! :[];
   urlDpt! : string;
   restaurantArray! : Restaurants[];
-  form! : FormGroup;
+  filteredRestaurants! : Restaurants[];
+  Data: Array<any> = [
+    { name: 'Tunisien', value: 'tunisien' },
+    { name: 'Marocain', value: 'marocain' },
+    { name: 'Francais', value: 'francais' },
+  ];
+  form: FormGroup = this.formBuilder.group({});
 
-
-  constructor(  private route : ActivatedRoute,
-                private router : Router,
-                private restaurantArrayService: RestaurantArrayService,
-                private formBuilder: FormBuilder) {
-
-                }
-
-                submit() { 
-                 
-                  
-                  console.log(this.form.value);
-                 }
-
-
-               
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private restaurantArrayService: RestaurantArrayService,
+    private formBuilder: FormBuilder
+  ) {
+    this.Data.forEach((option) => {
+      this.form.addControl(option.value, new FormControl(false));
+    });
+  }
 
   ngOnInit() {
     this.urlDpt = this.route.snapshot.params['dpt'];
-    console.log(this.urlDpt);
-
     this.restaurantArray = this.restaurantArrayService.getRestaurantsDpt(this.urlDpt);
-    console.log(this.restaurantArray);
+    this.form.setValue({
+      tunisien: true,
+      marocain: true,
+      francais: true
+    });
+    this.submitForm();
   }
 
   onSortRestaurantsAscendant() {
-    this.restaurantArray = this.restaurantArray.sort((a, b) => a.note - b.note);
+    this.filteredRestaurants = this.filteredRestaurants.sort((a, b) => a.note - b.note);
     console.log(this.restaurantArray);
   }
 
   onSortRestaurantsDescendant(){
-    this.restaurantArray = this.restaurantArray.sort((b, a) => a.note - b.note);
+    this.filteredRestaurants = this.filteredRestaurants.sort((b, a) => a.note - b.note);
     console.log(this.restaurantArray);
   }
 
+  submitForm() {
+
+    let items = this.form.value;
+    console.log(items)
+    let selectedCuisines = Object.keys(items).filter(key => items[key]);
+    console.log(selectedCuisines)
+
+    if (selectedCuisines.length > 0) {
+      this.filteredRestaurants = this.restaurantArray.filter(restaurant => {
+        // Check if the cuisine of restaurant matches the selected cuisine and the corresponding item in items is true
+        return Object.keys(items).some(cuisine => restaurant.cuisine === cuisine && items[cuisine]);
+      });
+    }
+  }
+
+
 }
+
+

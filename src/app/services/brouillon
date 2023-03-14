@@ -1,0 +1,12 @@
+    let items = this.form.value
+    let newArray = this.restaurantArray.filter(el => {
+      for (const item of items ){
+        if ( item==true && el.cuisine === item   ) {
+          return el;
+        } else{
+          return "";
+        }       
+      }
+    }
+);
+   console.log(newArray);

@@ -2,6 +2,8 @@
   <h2>{{ restaurants.name }}</h2>
   <img [src]="restaurants.imageUrl" [alt]="restaurants.name">
   <p>Département : {{ restaurants.department }}</p>
+  <p>Cuisine : {{ restaurants.cuisine }}</p>
+
   <p>Note : {{ restaurants.note }}</p>
 
   <p *ngIf = "restaurants.certification">Certification : {{ restaurants.certification }}</p>
