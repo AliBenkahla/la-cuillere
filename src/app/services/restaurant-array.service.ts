@@ -29,7 +29,7 @@ export class RestaurantArrayService {
             name : 'Le Parisien',
             department: '75',
             note : 7,
-            cuisine : 'français',
+            cuisine : 'francais',
             imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Gaggenau_2016_-Restaurant-_by-RaBoe_118.jpg/345px-Gaggenau_2016_-Restaurant-_by-RaBoe_118.jpg'
           },
           {
@@ -46,7 +46,7 @@ export class RestaurantArrayService {
             name : 'kkk',
             department: '93',
             note : 5,
-            cuisine : 'rrancais',
+            cuisine : 'francais',
             imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Vendeuse_de_nourriture_02.jpg/640px-Vendeuse_de_nourriture_02.jpg',
             certification : "AVS"
           }
